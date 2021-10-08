@@ -20,11 +20,15 @@ class ViewController: NSViewController {
     }
 
     @IBAction func addRectangle(_ sender: Any) {
-        forms.append(Square(name: "Square", color: NSColor.red, side: 22))
+        let count = forms.filter { $0 is Square }.count
+        let num = count > 0 ? " \(count + 1)" : ""
+        forms.append(Square(name: "Square\(num)", color: NSColor.red, side: 22))
     }
     
     @IBAction func addCircle(_ sender: Any) {
-        forms.append(Circle(name: "Circle", color: NSColor.blue, radius: 34))
+        let count = forms.filter { $0 is Circle }.count
+        let num = count > 0 ? " \(count + 1)" : ""
+        forms.append(Circle(name: "Circle\(num)", color: NSColor.blue, radius: 34))
     }
 }
 

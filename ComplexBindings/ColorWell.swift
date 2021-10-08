@@ -9,9 +9,9 @@
 import Cocoa
 
 open class ColorWell: NSColorWell {
-    override open class func defaultPlaceholder(forMarker marker: Any?, withBinding binding: NSBindingName) -> Any? {
+    override open class func defaultPlaceholder(for marker: Any?, with binding: NSBindingName) -> Any? {
         guard binding == .value else {
-            return NSColorWell.defaultPlaceholder(forMarker: marker, withBinding: binding)
+            return NSObject.defaultPlaceholder(for: marker, with: binding)
         }
         if NSMultipleValuesMarker.isEqual(marker) {
             return NSColor(patternImage: #imageLiteral(resourceName: "MultiplePlaceholderColorWellPattern"))
@@ -20,7 +20,7 @@ open class ColorWell: NSColorWell {
         } else if NSNoSelectionMarker.isEqual(marker) {
             return NSColor(patternImage: #imageLiteral(resourceName: "NoSelectionPlaceholderColorWellPattern"))
         } else {
-            return NSColorWell.defaultPlaceholder(forMarker: marker, withBinding: binding)
+            return NSObject.defaultPlaceholder(for: marker, with: binding)
         }
     }
     

@@ -9,7 +9,7 @@
 import Cocoa
 
 class Form: NSObject {
-    class Center: NSObject {
+    final class Center: NSObject {
         @objc dynamic var x: CGFloat
         @objc dynamic var y: CGFloat
         
@@ -27,15 +27,18 @@ class Form: NSObject {
     @objc dynamic var color: NSColor
     @objc dynamic var center: Center
     
+    @objc var formKind: String { "No special kind" }
+    
     init(name: String, color: NSColor) {
         self.name = name
         self.color = color
-        self.center = Center(point: NSZeroPoint)
+        self.center = Center(point: .zero)
     }
 }
 
 class Square: Form {
     @objc dynamic var side: Double
+    override var formKind: String { "Square" }
     
     init(name: String, color: NSColor, side: Double) {
         self.side = side
@@ -45,6 +48,7 @@ class Square: Form {
 
 class Circle: Form {
     @objc dynamic var radius: Double
+    override var formKind: String { "Circle" }
     
     init(name: String, color: NSColor, radius: Double) {
         self.radius = radius
